@@ -5,9 +5,18 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
 db = SQLAlchemy(app)
 owner_room_table = db.Table('owner_room', db.Model.metadata,
     db.Column('owner_id', db.Integer, db.ForeignKey('owners.id'), primary_key=True),
-    db.Column('room_id', db.Integer, db.ForeignKey('rooms.id'), primary_key=True),
-    db.Column('part', db.Float, nullable=False, default=0)
+    db.Column('room_id', db.Integer, db.ForeignKey('rooms.id'), primary_key=True)
 )
+
+class Part(db.Model):
+    """
+    Сведения о доле владения комнатой.
+    """
+    __tablename__ = 'parts'
+    id = db.Column(db.Integer, primary_key=True)
+    owner = db.Column(db.Integer, db.ForeignKey('owners.id'))
+    room = db.Column(db.Integer, db.ForeignKey('rooms.id'))
+    part = db.Column(db.Float, nullable=False, default=0)
 
 class Owner(db.Model):
     """
@@ -17,6 +26,7 @@ class Owner(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     rooms = db.relationship("Room", secondary=owner_room_table, back_populates='owners')
+    parts = db.relationship('Part', backref=db.backref('owners', lazy=True))
 
 class Repaiment(db.Model):
     """
@@ -36,8 +46,10 @@ class Room(db.Model):
     """
     __tablename__ = 'rooms'
     id = db.Column(db.Integer, primary_key=True)
+    price = db.Column(db.Float)
     owners = db.relationship('Owner', secondary=owner_room_table, back_populates='rooms')
     repaiments = db.relationship('Repaiment', backref=db.backref('real_estate_object', lazy=True))
+    parts = db.relationship('Part', backref=db.backref('rooms', lazy=True))
 
 with app.app_context():
     db.create_all()
@@ -48,12 +60,17 @@ def init_owners():
 
     db.session.commit()
 
-def init_first():
-    room = Room()
-    room.owners.append(Owner(name='Owner1'))
+def init_room(price, parts):
+    room = Room(price=price, parts=[])
+    for owner in Owner.query.all():
+        if owner.name not in parts:
+            continue
+
+        room.parts.append(Part(owner=owner.id, part=parts[owner.name]))
+        room.owners.append(owner)
+    
     db.session.add(room)
     db.session.commit()
-
 
 def init_storage():
     """
@@ -61,24 +78,8 @@ def init_storage():
     """
     rooms = Room.query.all()
     if rooms is None or len(rooms) != 4:
-        room1 = Room()
-        room2 = Room()
-        db.session.add(room1)
-        db.session.add(room2)
-        db.session.commit()
-        
-        owner1 = Owner(name='Owner1')
-        owner2 = Owner(name='Owner2')
-        db.session.add(owner1)
-        db.session.add(owner2)
-        db.session.commit()
-        
-        room1.owners.append(owner1)
-        room2.owners.append(owner2)
-        db.session.commit()
-        
-        repaiment1 = Repaiment(amount=100, target=1, date='2020-01-01', room=1, owner=1)
-        repaiment2 = Repaiment(amount=200, target=2, date='2020-01-02', room=2, owner=2)
-        db.session.add(repaiment1)
-        db.session.add(repaiment2)
-        db.session.commit()
+        init_owners()
+        init_room(2625000, { "Roman": 0.35, "Uriy": 0.35, "Nuriya": 0.3 })
+        init_room(3653000, { "Roman": 0.5, "Uriy": 0.5 })
+        init_room(2713000, { "Roman": 0.5, "Uriy": 0.5 })
+        init_room(2844000, { "Roman": 0.5, "Uriy": 0.5 })
