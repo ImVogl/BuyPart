@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "ee501c7e-0dbf-4d17-a489-f7b119e5875a",
+		"name": "BuyPart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26003230",
+		"_collection_link": "https://speeding-spaceship-453404.postman.co/workspace/Main-Solisoft~612699fc-933b-40af-94d2-08cb05bf0f95/collection/26003230-ee501c7e-0dbf-4d17-a489-f7b119e5875a?action=share&source=collection_link&creator=26003230"
+	},
+	"item": [
+		{
+			"name": "Init",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/init",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InitRepaimentsBadRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 1,\r\n    \"owner_id\": 1,\r\n    \"repaiments\":[\r\n        {\r\n            \"target\": 50000,\r\n            \"date\": \"2025-03\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/repaiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"repaiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InitRepaimentsFirst",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 1,\r\n    \"owner_id\": 1,\r\n    \"repaiments\":[\r\n        {\r\n            \"target\": 50000,\r\n            \"date\": \"2025-03\"\r\n        },\r\n        {\r\n            \"target\": 50000,\r\n            \"date\": \"2025-04\"\r\n        },\r\n        {\r\n            \"target\": 50000,\r\n            \"date\": \"2025-05\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-06\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-07\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-08\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-09\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-10\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-11\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2025-12\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-01\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/repaiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"repaiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InitRepaimentsSecond",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 2,\r\n    \"owner_id\": 1,\r\n    \"repaiments\":[\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-02\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-03\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-04\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-05\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-06\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-07\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-08\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-09\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-10\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-11\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2026-12\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-01\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-02\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-03\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-04\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-05\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-06\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-07\"\r\n        },\r\n        {\r\n            \"target\": 21200,\r\n            \"date\": \"2027-08\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/repaiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"repaiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InitRepaimentsThird",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 3,\r\n    \"owner_id\": 1,\r\n    \"repaiments\":[\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-09\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-10\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-11\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2027-12\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-01\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-02\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-03\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-04\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-05\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-06\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-07\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-08\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-09\"\r\n        },\r\n        {\r\n            \"target\": 45200,\r\n            \"date\": \"2028-10\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/repaiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"repaiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InitRepaimentsFourth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 4,\r\n    \"owner_id\": 1,\r\n    \"repaiments\":[\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-11\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2028-12\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-01\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-02\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-03\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-04\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-05\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-06\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-07\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-08\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-09\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-10\"\r\n        },\r\n        {\r\n            \"target\": 80000,\r\n            \"date\": \"2029-11\"\r\n        },\r\n        {\r\n            \"target\": 97600,\r\n            \"date\": \"2029-12\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/repaiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"repaiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room_id\": 1,\r\n    \"owner_id\": 1,\r\n    \"date\": \"2025-03\",\r\n    \"amount\": 50000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/pay",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
